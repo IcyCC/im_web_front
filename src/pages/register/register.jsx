@@ -16,22 +16,33 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        <Form>
-          <FormItem>
-            <Input/>
+        <Form className={styles.registerForm}>
+          <FormItem className={styles.registerTitle}>
+            MIM
           </FormItem>
           <FormItem>
-            <Input/>
+            <Input placeholder={'邮箱'} className={styles.registerInput}/>
           </FormItem>
           <FormItem>
-            <Button>
+            <Input placeholder={'昵称'} className={styles.registerInput}/>
+          </FormItem>
+          <FormItem>
+            <Input placeholder={'密码'} className={styles.registerInput}/>
+          </FormItem>
+          <FormItem>
+            <Input placeholder={'确认'} className={styles.registerInput}/>
+          </FormItem>
+          <FormItem>
+            <Button type={'primary'} className={styles.registerButton}>
               注册
             </Button>
           </FormItem>
+          <FormItem>
+            <Link to={'/login'}>
+              已有帐号，前往登录
+            </Link>
+          </FormItem>
         </Form>
-        <Link>
-          已有帐号，前往登录
-        </Link>
       </div>
     );
   }

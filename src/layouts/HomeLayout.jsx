@@ -1,5 +1,16 @@
 import React from 'react';
+import { Row, Col } from 'antd';
+import styles from '@/layouts/HomeLayout.less';
 
-const Layout = ({ children }) => <>{children}</>;
 
-export default Layout;
+const HomeLayout = props => {
+  return (
+    <div span={16} className={styles.homeLayout}>
+      <div>
+        {props.children}
+      </div>
+    </div>
+  );
+};
+
+export default HomeLayout;
