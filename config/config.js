@@ -109,8 +109,27 @@ export default {
           component: '../layouts/HomeLayout',
           routes: [
             {
-              'path': '/home',
-              'component': './home/home'
+              path: '/home',
+              component: './home/home',
+              routes: [
+                {
+                  path: '/home/user',
+                  component: './home/user/user'
+                },
+                {
+                  path: '/home/group',
+                  component: './home/group/group'
+                },
+                {
+                  path: '/home/search',
+                  component: './home/search/search'
+                },
+                {
+                  path: '/home/im',
+                  component: './home/im/im'
+                }
+              ]
+
             }
           ]
         }
