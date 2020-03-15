@@ -67,6 +67,7 @@ class Login extends Component {
   }
 }
 
-export default connect(({}) => {
-
-})(Form.create()(Login));
+export default connect(({register}) => ({
+    register
+  }
+))(Form.create()(Login));

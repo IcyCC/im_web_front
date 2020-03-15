@@ -1,10 +1,13 @@
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import React, { useState, useEffect } from 'react';
+import { toHome } from '@/utils/forceTo';
 import { connect } from 'dva';
 import { Spin, Form, Layout, Input, Button } from 'antd';
 import styles from './register.less';
 import Header from 'antd/es/calendar/Header';
 import { Link } from 'umi';
+import registerServiceWorker from 'umi-plugin-react/lib/plugins/pwa/registerServiceWorker';
+import { getAuthority, getJwt } from '@/utils/authority';
 
 const FormItem = Form.Item;
 
@@ -15,6 +18,11 @@ class Register extends React.Component {
 
   constructor(props) {
     super(props);
+  };
+
+  componentDidUpdate = () => {
+    console.log(getAuthority());
+    toHome();
   };
 
   compareToFirstPassword = (rule, value, callback) => {
@@ -45,6 +53,11 @@ class Register extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        const { dispatch } = this.props;
+        dispatch({
+          type: 'register/register',
+          playload: values
+        });
       }
     });
   };
@@ -124,6 +137,8 @@ class Register extends React.Component {
 }
 
 
-export default  connect(({}) => {
-
-})(Form.create()(Register));
+export default  connect(({register}) => (
+  {
+    register,
+  }
+))(Form.create()(Register));
